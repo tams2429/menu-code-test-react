@@ -40,6 +40,9 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         margin-bottom: 5%;
+        .active {
+          border: 3px solid green;
+        }
         .card {
           width: 40%;
           height: 250px;
