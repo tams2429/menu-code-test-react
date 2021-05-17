@@ -5,6 +5,10 @@ import { menu } from './MenuItems'
 
 export const HomePage = () => {
 
+  const renderSections = () => {
+
+  }
+
   const renderCards = (course) => {
     const courseItems = menu[course]
     return (

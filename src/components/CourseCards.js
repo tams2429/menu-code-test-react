@@ -1,17 +1,20 @@
 import React from 'react'
 import '../styles/Main.scss'
-// import { Card, CardDeck } from 'react-bootstrap'
 import Bruschetta from '../images/Bruschetta.jpg'
-import Cheesecake from '../images/Cheesecake.jpg'
 
 const cardBackgroundStyle = {
   backgroundImage: `url(${Bruschetta})`
 }
 
 export const CourseCards = () => {
+
+  const handleClick = () => {
+
+  }
+
   return (
     <div className="card-container">
-      <div className="card" style={cardBackgroundStyle}>
+      <div className="card" style={cardBackgroundStyle} onClick={handleClick}>
         <h2>Bruschetta</h2>
         <h3>£3.50</h3>
       </div>

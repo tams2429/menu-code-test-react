@@ -8,6 +8,7 @@
 * {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   box-sizing: border-box;
+  margin: 0;
 }
 
 h1 {
@@ -20,62 +21,69 @@ h1 {
   align-items: center;
 }
 
-.card-container {
-  width: 100vw;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  .card {
-    width: 25%;
-    height: 200px;
-    background-size: cover;
+section {
+  >h1 {
+    margin-left: 6%;
+  }
+  .card-container {
+    width: 100vw;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    position: relative;
-    margin: 15px;
-    cursor: pointer;
-    h2 {
-      font-size: 24px;
-      color: white;
-      z-index: 1;
-    }
-    h3 {
-      font-size: 18px;
-      color: white;
-      z-index: 1;
-    }
-  }
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 10px;
-  }
-  @media only screen and (max-width: 750px) {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
     .card {
       width: 40%;
-      height: 200px;
-      margin: 10px;
+      height: 250px;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      position: relative;
+      margin: 15px;
+      cursor: pointer;
       h2 {
-        font-size: 18px;
+        font-size: 34px;
         color: white;
         z-index: 1;
       }
       h3 {
-        font-size: 14px;
+        font-size: 28px;
         color: white;
         z-index: 1;
       }
     }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+    @media only screen and (max-width: 750px) {
+      .card {
+        width: 40%;
+        height: 200px;
+        margin: 10px;
+        h2 {
+          font-size: 18px;
+          color: white;
+          z-index: 1;
+        }
+        h3 {
+          font-size: 14px;
+          color: white;
+          z-index: 1;
+        }
+      }
+    }
   }
 }
+
 
 
 // .dish {
