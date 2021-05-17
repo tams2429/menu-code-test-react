@@ -1,0 +1,100 @@
+//Bootstrap custom themes
+// $theme-colors: (
+//   'card-theme': #c6c8ff,
+// );
+
+// @import '~bootstrap/scss/bootstrap';
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.card-container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  .card {
+    width: 25%;
+    height: 200px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+    h2 {
+      font-size: 24px;
+      color: white;
+    }
+    h3 {
+      font-size: 18px;
+      color: white;
+    }
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.2);
+  }
+}
+
+// .dish {
+//   width: 25% !important;
+// }
+
+// @media (min-width: 576px) {
+//   .card-deck .card {
+//     flex: 0;
+//     width: 25%;
+//     margin-right: 15px;
+//     margin-bottom: 0;
+//     margin-left: 15px;
+//   }
+// }
+
+// .MainActivities-Weekly-Wrapper {
+//   margin-top: 2%;
+// }
+// .MainActivities-Weekly-Wrapper,
+// .MainActivities-Aligned-Wrapper,
+// .MainActivities-New-Wrapper {
+//   margin-bottom: 8%;
+//   h2 {
+//     font-size: 40px;
+//   }
+// }
+
+
+// .card {
+//   border-radius: 26px;
+//   cursor: pointer;
+//   .card-body {
+//     .card-title {
+//       font-size: 18px;
+//       text-decoration: underline;
+//       font-weight: 900;
+//     }
+//     .date {
+//       font-size: 18px;
+//       font-style: italic;
+//       font-weight: bold;
+//     }
+//     .price {
+//       font-size: 18px;
+//     }
+//   }
+// }
+
+.card:hover {
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
