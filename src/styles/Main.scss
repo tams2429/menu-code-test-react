@@ -4,15 +4,13 @@
 // );
 
 // @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Noto+Sans+JP&display=swap');
+
 
 * {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   box-sizing: border-box;
   margin: 0;
-}
-
-h1 {
-  font-size: 32px;
 }
 
 .app-container {
@@ -21,63 +19,94 @@ h1 {
   align-items: center;
 }
 
-section {
-  >h1 {
-    margin-left: 6%;
-  }
-  .card-container {
-    width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
-    .card {
-      width: 40%;
-      height: 250px;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      position: relative;
-      margin: 15px;
-      cursor: pointer;
-      h2 {
-        font-size: 34px;
-        color: white;
-        z-index: 1;
-      }
-      h3 {
-        font-size: 28px;
-        color: white;
-        z-index: 1;
-      }
+.menu-container {
+  >div {
+    >h1 {
+      text-align: center;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 42px;
+      text-decoration: underline;
+      margin-bottom: 3%;
     }
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      background-color: rgba(0,0,0,0.2);
-      border-radius: 10px;
-    }
-    @media only screen and (max-width: 750px) {
-      .card {
-        width: 40%;
-        height: 200px;
-        margin: 10px;
-        h2 {
-          font-size: 18px;
-          color: white;
-          z-index: 1;
+    section {
+      >h1 {
+        margin-left: 6%;
+        font-family: 'Architects Daughter', cursive;
+        font-size: 38px;
+      }
+      .card-container {
+        width: 100vw;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-bottom: 5%;
+        .card {
+          width: 40%;
+          height: 250px;
+          background-size: cover;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          position: relative;
+          margin: 15px;
+          cursor: pointer;
+          h2 {
+            font-size: 34px;
+            font-family: 'Architects Daughter', cursive;
+            font-weight: 200;
+            color: white;
+            z-index: 1;
+          }
+          h3 {
+            font-size: 28px;
+            font-family: 'Architects Daughter', cursive;
+            color: white;
+            z-index: 1;
+          }
         }
-        h3 {
-          font-size: 14px;
-          color: white;
-          z-index: 1;
+        .card::before {
+          content: "";
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          background-color: rgba(0,0,0,0.2);
+          border-radius: 10px;
+        }
+        @media only screen and (max-width: 750px) {
+          .card {
+            width: 40%;
+            height: 200px;
+            margin: 10px;
+            h2 {
+              font-size: 28px;
+              color: white;
+              z-index: 1;
+            }
+            h3 {
+              font-size: 24px;
+              color: white;
+              z-index: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .menu-container {
+    >div {
+      >h1 {
+        font-size: 36px;
+      }
+      section {
+        >h1 {
+          font-size: 32px;
         }
       }
     }

@@ -33,6 +33,7 @@ export const HomePage = () => {
   return (
     <div className="menu-container">
       <div className="diner1-menu">
+        <h1>Diner 1, please select your food:</h1>
         <section className="starter-section">
           <h1>Starters</h1>
           {renderCards('starters')}
@@ -47,6 +48,7 @@ export const HomePage = () => {
         </section>
       </div>
       <div className="diner2-menu">
+        <h1>Diner 2, please select your food:</h1>
         <section className="starter-section">
           <h1>Starters</h1>
           {renderCards('starters')}
