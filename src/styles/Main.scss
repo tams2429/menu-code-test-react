@@ -7,16 +7,24 @@
 
 * {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
 }
 
 h1 {
   font-size: 32px;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card-container {
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   .card {
     width: 25%;
     height: 200px;
@@ -25,15 +33,19 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-radius: 10px;
     position: relative;
+    margin: 15px;
+    cursor: pointer;
     h2 {
       font-size: 24px;
       color: white;
+      z-index: 1;
     }
     h3 {
       font-size: 18px;
       color: white;
+      z-index: 1;
     }
   }
   .card::before {
@@ -44,8 +56,27 @@ h1 {
     bottom: 0px;
     left: 0px;
     background-color: rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
+  @media only screen and (max-width: 750px) {
+    .card {
+      width: 40%;
+      height: 200px;
+      margin: 10px;
+      h2 {
+        font-size: 18px;
+        color: white;
+        z-index: 1;
+      }
+      h3 {
+        font-size: 14px;
+        color: white;
+        z-index: 1;
+      }
+    }
   }
 }
+
 
 // .dish {
 //   width: 25% !important;
@@ -97,4 +128,22 @@ h1 {
 .card:hover {
   transform: scale(1.1);
   transition: all 0.4s ease-in-out;
+}
+
+@media only screen and (max-width: 750px) {
+  .card {
+    width: 25%;
+    height: 200px;
+    margin: 0;
+    h2 {
+      font-size: 18px;
+      color: white;
+      z-index: 1;
+    }
+    h3 {
+      font-size: 14px;
+      color: white;
+      z-index: 1;
+    }
+  }
 }

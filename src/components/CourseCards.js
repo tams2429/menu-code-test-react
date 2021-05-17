@@ -23,6 +23,18 @@ export const CourseCards = () => {
         <h2>Bruschetta</h2>
         <h3>£3.50</h3>
       </div>
+      <div className="card" style={cardBackgroundStyle}>
+        <h2>Bruschetta</h2>
+        <h3>£3.50</h3>
+      </div>
+      <div className="card" style={cardBackgroundStyle}>
+        <h2>Bruschetta</h2>
+        <h3>£3.50</h3>
+      </div>
+      <div className="card" style={cardBackgroundStyle}>
+        <h2>Bruschetta</h2>
+        <h3>£3.50</h3>
+      </div>
     </div>
     // <div className="MainActivities-Weekly-Wrapper">
     //   <div className="MainActivities-Weekly-Container">
