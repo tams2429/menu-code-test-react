@@ -5,8 +5,12 @@ export const TotalValue = (props) => {
   const total = props.total
 
   return (
-    <div className="bill-container">
-      <p>Current Total is {total}</p>
-    </div>
+    (total === 0)
+      ?
+      null
+      :
+      <div className="bill-container">
+        <p>Current Total is £{total}</p>
+      </div>
   )
 }
