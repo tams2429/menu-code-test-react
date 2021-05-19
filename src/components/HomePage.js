@@ -48,7 +48,6 @@ export const HomePage = () => {
           setdiner2starter(diner2starter)
           settotal(total + selectedItem[0].price)
         }
-
       } else {
         e.target.classList.remove('active')
 
@@ -146,52 +145,51 @@ export const HomePage = () => {
         }
       }
     }
-
   }
 
   //Checks for all the conditions/rules that results in successful order
   const handleSubmit = () => {
-    // const { addToast } = useToasts()
+    let errorCount = 0
     //Check if each diner has ordered main
     if (diner1main.length === 0) {
-      console.log('Diner 1 needs a main')
+      errorCount = 1
       addToast('Diner 1 needs a main', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
     if (diner2main.length === 0) {
-      console.log('Diner 2 needs a main')
+      errorCount = 1
       addToast('Diner 2 needs a main', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     //Check each diner has a min. of 2 different courses
     if (diner1starter.length === 0 && (diner1main.length === 0 || diner1dessert.length === 0)) {
-      console.log('Diner 1 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner1main.length === 0 && (diner1starter.length === 0 || diner1dessert.length === 0)) {
-      console.log('Diner 1 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner1dessert.length === 0 && (diner1starter.length === 0 || diner1main.length === 0)) {
-      console.log('Diner 1 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     if (diner2starter.length === 0 && (diner2main.length === 0 || diner2dessert.length === 0)) {
-      console.log('Diner 2 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner2main.length === 0 && (diner2starter.length === 0 || diner2dessert.length === 0)) {
-      console.log('Diner 2 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner2dessert.length === 0 && (diner2starter.length === 0 || diner2main.length === 0)) {
-      console.log('Diner 2 needs to select a min. of 2 different courses')
+      errorCount = 1
       addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     //Check each diner cannot have more than one of the same course
     if (diner1starter.length > 1 || diner1main.length > 1 || diner1dessert.length > 1) {
-      console.log('Diner 1 cannot have more than one of the same course')
+      errorCount = 1
       addToast('Diner 1 cannot have more than one of the same course', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
     if (diner2starter.length > 1 || diner2main.length > 1 || diner2dessert.length > 1) {
-      console.log('Diner 2 cannot have more than one of the same course')
+      errorCount = 1
       addToast('Diner 2 cannot have more than one of the same course', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
@@ -200,7 +198,7 @@ export const HomePage = () => {
       if (Object.values(diner1dessert[i]).includes('Cheesecake')) {
         for (let j = 0; j < diner2dessert.length; j++) {
           if (Object.values(diner2dessert[j]).includes('Cheesecake')) {
-            console.log('Cannot choose 2 cheesecakes')
+            errorCount = 1
             addToast('Cannot choose 2 cheesecakes, please remove 1 cheesecake', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
@@ -212,7 +210,7 @@ export const HomePage = () => {
       if (Object.values(diner1starter[i]).includes('Prawn cocktail')) {
         for (let j = 0; j < diner1main.length; j++) {
           if (Object.values(diner1main[j]).includes('Salmon fillet')) {
-            console.log('Diner 1 cannot choose Prawn Cocktail & Salmon Fillet')
+            errorCount = 1
             addToast('Diner 1 cannot choose Prawn Cocktail & Salmon Fillet', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
@@ -222,13 +220,16 @@ export const HomePage = () => {
       if (Object.values(diner2starter[i]).includes('Prawn cocktail')) {
         for (let j = 0; j < diner2main.length; j++) {
           if (Object.values(diner2main[j]).includes('Salmon fillet')) {
-            console.log('Diner 2 cannot choose Prawn Cocktail & Salmon Fillet')
+            errorCount = 1
             addToast('Diner 2 cannot choose Prawn Cocktail & Salmon Fillet', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
       }
     }
 
+    if (errorCount === 0) {
+      addToast('Successful order', { appearance: 'success', autoDismiss: true, autoDismissTimeout: 30000 })
+    }
   }
 
   const renderCards = (course, dinerNumber) => {
@@ -266,21 +267,13 @@ export const HomePage = () => {
           <h1>Main courses</h1>
           {renderCards('mains', DinerNumber)}
         </section>
-        <section className="starter-section">
+        <section className="dessert-section">
           <h1>Desserts</h1>
           {renderCards('desserts', DinerNumber)}
         </section>
       </div>
     )
   }
-
-  console.log('Total value state is:',total)
-  console.log('Diner 1 Starter State is:',diner1starter)
-  console.log('Diner 1 Main State is:',diner1main)
-  console.log('Diner 1 Dessert State is:',diner1dessert)
-  console.log('Diner 2 Starter State is:',diner2starter)
-  console.log('Diner 2 Main State is:',diner2main)
-  console.log('Diner 2 Dessert State is:',diner2dessert)
 
   return (
     <div className="homepage-container">
@@ -290,8 +283,6 @@ export const HomePage = () => {
         {renderDinerMenu(2)}
       </div>
       <button onClick={handleSubmit}>Submit</button>
-
     </div>
-
   )
 }

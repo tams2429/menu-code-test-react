@@ -10,7 +10,6 @@ class App extends React.Component {
         <ToastProvider>
           <HomePage />
         </ToastProvider>
-
       </div>
     )
   }
