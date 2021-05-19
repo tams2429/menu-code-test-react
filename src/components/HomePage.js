@@ -2,9 +2,11 @@ import React from 'react'
 import '../styles/Main.scss'
 import { menu } from './MenuItems'
 import { TotalValue } from './TotalValue'
+import { useToasts } from 'react-toast-notifications'
 
 
 export const HomePage = () => {
+  const { addToast } = useToasts()
   const [diner1starter, setdiner1starter] = React.useState([])
   const [diner1main, setdiner1main] = React.useState([])
   const [diner1dessert, setdiner1dessert] = React.useState([])
@@ -147,45 +149,50 @@ export const HomePage = () => {
 
   }
 
-  //Check whether selection is invalid based on rules
-  //Checks whether a min of 2 course selected for each diner (i.e. combine all diner 1 states into 1 array and check length of array >= 5 => min 2 courses)
-  //Checks whether main course has been selected (i.e. diner1main.length && diner2main.length === 2)
+  //Checks for all the conditions/rules that results in successful order
   const handleSubmit = () => {
-    console.log('HandleSubmit triggered')
-    //Prevent page reload on submit
-    // e.prevent.default
-
+    // const { addToast } = useToasts()
     //Check if each diner has ordered main
     if (diner1main.length === 0) {
       console.log('Diner 1 needs a main')
+      addToast('Diner 1 needs a main', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
     if (diner2main.length === 0) {
       console.log('Diner 2 needs a main')
+      addToast('Diner 2 needs a main', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     //Check each diner has a min. of 2 different courses
     if (diner1starter.length === 0 && (diner1main.length === 0 || diner1dessert.length === 0)) {
       console.log('Diner 1 needs to select a min. of 2 different courses')
+      addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner1main.length === 0 && (diner1starter.length === 0 || diner1dessert.length === 0)) {
       console.log('Diner 1 needs to select a min. of 2 different courses')
+      addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner1dessert.length === 0 && (diner1starter.length === 0 || diner1main.length === 0)) {
       console.log('Diner 1 needs to select a min. of 2 different courses')
+      addToast('Diner 1 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     if (diner2starter.length === 0 && (diner2main.length === 0 || diner2dessert.length === 0)) {
       console.log('Diner 2 needs to select a min. of 2 different courses')
+      addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner2main.length === 0 && (diner2starter.length === 0 || diner2dessert.length === 0)) {
       console.log('Diner 2 needs to select a min. of 2 different courses')
+      addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     } else if (diner2dessert.length === 0 && (diner2starter.length === 0 || diner2main.length === 0)) {
       console.log('Diner 2 needs to select a min. of 2 different courses')
+      addToast('Diner 2 needs to select a min. of 2 different courses', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     //Check each diner cannot have more than one of the same course
     if (diner1starter.length > 1 || diner1main.length > 1 || diner1dessert.length > 1) {
       console.log('Diner 1 cannot have more than one of the same course')
+      addToast('Diner 1 cannot have more than one of the same course', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
     if (diner2starter.length > 1 || diner2main.length > 1 || diner2dessert.length > 1) {
       console.log('Diner 2 cannot have more than one of the same course')
+      addToast('Diner 2 cannot have more than one of the same course', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
     }
 
     //Check there is only 1 piece of cheesecake left
@@ -194,6 +201,7 @@ export const HomePage = () => {
         for (let j = 0; j < diner2dessert.length; j++) {
           if (Object.values(diner2dessert[j]).includes('Cheesecake')) {
             console.log('Cannot choose 2 cheesecakes')
+            addToast('Cannot choose 2 cheesecakes, please remove 1 cheesecake', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
       }
@@ -205,6 +213,7 @@ export const HomePage = () => {
         for (let j = 0; j < diner1main.length; j++) {
           if (Object.values(diner1main[j]).includes('Salmon fillet')) {
             console.log('Diner 1 cannot choose Prawn Cocktail & Salmon Fillet')
+            addToast('Diner 1 cannot choose Prawn Cocktail & Salmon Fillet', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
       }
@@ -214,6 +223,7 @@ export const HomePage = () => {
         for (let j = 0; j < diner2main.length; j++) {
           if (Object.values(diner2main[j]).includes('Salmon fillet')) {
             console.log('Diner 2 cannot choose Prawn Cocktail & Salmon Fillet')
+            addToast('Diner 2 cannot choose Prawn Cocktail & Salmon Fillet', { appearance: 'warning', autoDismiss: true, autoDismissTimeout: 30000 })
           }
         }
       }
@@ -280,6 +290,7 @@ export const HomePage = () => {
         {renderDinerMenu(2)}
       </div>
       <button onClick={handleSubmit}>Submit</button>
+
     </div>
 
   )
