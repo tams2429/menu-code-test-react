@@ -10,7 +10,7 @@ export const TotalValue = (props) => {
       null
       :
       <div className="bill-container">
-        <p>Current Total is £{total}</p>
+        <p data-testid="totalValue" value={total}>Current Total is £{total}</p>
       </div>
   )
 }
