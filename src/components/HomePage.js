@@ -151,6 +151,73 @@ export const HomePage = () => {
   //Checks whether a min of 2 course selected for each diner (i.e. combine all diner 1 states into 1 array and check length of array >= 5 => min 2 courses)
   //Checks whether main course has been selected (i.e. diner1main.length && diner2main.length === 2)
   const handleSubmit = () => {
+    console.log('HandleSubmit triggered')
+    //Prevent page reload on submit
+    // e.prevent.default
+
+    //Check if each diner has ordered main
+    if (diner1main.length === 0) {
+      console.log('Diner 1 needs a main')
+    }
+    if (diner2main.length === 0) {
+      console.log('Diner 2 needs a main')
+    }
+
+    //Check each diner has a min. of 2 different courses
+    if (diner1starter.length === 0 && (diner1main.length === 0 || diner1dessert.length === 0)) {
+      console.log('Diner 1 needs to select a min. of 2 different courses')
+    } else if (diner1main.length === 0 && (diner1starter.length === 0 || diner1dessert.length === 0)) {
+      console.log('Diner 1 needs to select a min. of 2 different courses')
+    } else if (diner1dessert.length === 0 && (diner1starter.length === 0 || diner1main.length === 0)) {
+      console.log('Diner 1 needs to select a min. of 2 different courses')
+    }
+
+    if (diner2starter.length === 0 && (diner2main.length === 0 || diner2dessert.length === 0)) {
+      console.log('Diner 2 needs to select a min. of 2 different courses')
+    } else if (diner2main.length === 0 && (diner2starter.length === 0 || diner2dessert.length === 0)) {
+      console.log('Diner 2 needs to select a min. of 2 different courses')
+    } else if (diner2dessert.length === 0 && (diner2starter.length === 0 || diner2main.length === 0)) {
+      console.log('Diner 2 needs to select a min. of 2 different courses')
+    }
+
+    //Check each diner cannot have more than one of the same course
+    if (diner1starter.length > 1 || diner1main.length > 1 || diner1dessert.length > 1) {
+      console.log('Diner 1 cannot have more than one of the same course')
+    }
+    if (diner2starter.length > 1 || diner2main.length > 1 || diner2dessert.length > 1) {
+      console.log('Diner 2 cannot have more than one of the same course')
+    }
+
+    //Check there is only 1 piece of cheesecake left
+    for (let i = 0; i < diner1dessert.length; i++) {
+      if (Object.values(diner1dessert[i]).includes('Cheesecake')) {
+        for (let j = 0; j < diner2dessert.length; j++) {
+          if (Object.values(diner2dessert[j]).includes('Cheesecake')) {
+            console.log('Cannot choose 2 cheesecakes')
+          }
+        }
+      }
+    }
+
+    //Check for each diner if 'Prawn Cocktail' chosen, cannot choose 'Salmon Fillet'
+    for (let i = 0; i < diner1starter.length; i++) {
+      if (Object.values(diner1starter[i]).includes('Prawn cocktail')) {
+        for (let j = 0; j < diner1main.length; j++) {
+          if (Object.values(diner1main[j]).includes('Salmon fillet')) {
+            console.log('Diner 1 cannot choose Prawn Cocktail & Salmon Fillet')
+          }
+        }
+      }
+    }
+    for (let i = 0; i < diner2starter.length; i++) {
+      if (Object.values(diner2starter[i]).includes('Prawn cocktail')) {
+        for (let j = 0; j < diner2main.length; j++) {
+          if (Object.values(diner2main[j]).includes('Salmon fillet')) {
+            console.log('Diner 2 cannot choose Prawn Cocktail & Salmon Fillet')
+          }
+        }
+      }
+    }
 
   }
 
@@ -212,7 +279,7 @@ export const HomePage = () => {
         {renderDinerMenu(1)}
         {renderDinerMenu(2)}
       </div>
-      <button onSubmit={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
 
   )
